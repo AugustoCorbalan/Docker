@@ -1,0 +1,33 @@
+version: '3' #Indica la version de docker-compose que vamos a utilizar
+
+services: #Acá listamos todos los servicios que conforman nuestra aplicación
+  gateway:
+    container_name: gateway #Nombre con el que se identifica este contenedor en la red
+    restart: always # Indica que hacer si se cae el servidor
+    build: ./gateway # Indica en donde se encuentra la imagen para crear el contenedor
+    ports: 
+      - "8000:8000" #Indica el puerto que va a dejara abierto el contenedor
+  characters:
+    container_name: characters 
+    restart: always 
+    build: ./characters 
+    ports: 
+      - "8001:8001"
+  planets:
+    container_name: planets 
+    restart: always 
+    build: ./planets 
+    ports: 
+      - "8002:8002"
+  films:
+    container_name: films 
+    restart: always 
+    build: ./films 
+    ports: 
+      - "8003:8003"
+  database:
+    container_name: database 
+    restart: always 
+    build: ./database 
+    ports: 
+      - "8004:8004"
